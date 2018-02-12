@@ -1,14 +1,36 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      YouTube Player
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <div class="categories-wrapper">
+    <ion-label class="section-title">Categories</ion-label>
+    <ion-scroll scrollX="true" class="categories-buttons-wrapper">
+      <button ion-button round color="danger"
+        (tap)="searchTrandingVideos()">
+        <ion-icon name="ios-flame" style="margin-right: 10px;"></ion-icon>
+        Tranding
+      </button>
+      <button ion-button round *ngFor="let category of categories"
+        (tap)="searchVideos(category?.id)">
+        {{ category?.snippet?.title }}
+      </button>
+    </ion-scroll>
+  </div>
+
+  <div class="videos-wrapper">
+    <ion-label class="section-title">Videos</ion-label>
+    <ion-list class="videos-list">
+      <ion-item *ngFor="let video of videos" class="youtube-video-cell"
+        (tap)="youtube.openVideo(video?.id?.videoId ? video?.id?.videoId : video?.id)">
+        <img [src]="video?.snippet?.thumbnails['default']?.url" item-start>
+        <h2>{{ video?.snippet?.title }}</h2>
+        <p>{{ video?.snippet?.description }}</p>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>

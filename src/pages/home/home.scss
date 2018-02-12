@@ -1,3 +1,28 @@
 page-home {
+    .section-title {
+        font-size: 19px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
 
+    .categories-wrapper {
+        .categories-buttons-wrapper {
+            height: 80px;
+
+            .scroll-zoom-wrapper {
+                display: inline-flex;
+                flex-direction: row;
+            } 
+        }   
+    }
+
+    .videos-wrapper {
+        .youtube-video-cell {
+            cursor: pointer;
+            
+            img {
+                width: 120px;
+            }
+        }
+    }
 }
